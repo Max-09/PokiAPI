@@ -1,0 +1,22 @@
+
+.rojo{
+    background-color: aquamarine;
+    width: 300px;
+}
+
+.pokemon{
+	background-color: #eee;
+	border-radius: 20px;
+	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+    width: 200px;
+}
+
+.pokedex {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+    padding-inline-start: 0;
+}
