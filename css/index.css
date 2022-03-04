@@ -20,3 +20,11 @@
     grid-gap: 20px;
     padding-inline-start: 0;
 }
+
+.hide{
+    opacity: 0;
+}
+
+.open{
+    opacity: 1;
+}
