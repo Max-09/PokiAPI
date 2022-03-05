@@ -8,13 +8,15 @@
     <title>POKEDEX</title>
 </head>
 <body>
-    <h1>Pokemones</h1>
-    <div id="generation"></div>
-    <div id="search">
-        <input type="onkeydown" id="searchPoke">
+    <div class="imgContainer"><img src="./img/Logo.png" alt="PokeLogo"></div>
+    <div><h1 style="color: white">CHOOSE GENERATION</h1></div>
+    
+    <div class="generation"></div>
+    <div class="search">
+        <input type="onkeydown" id="searchPoke" placeholder="SEARCH YOUR FAVORITE POKEMON">
     </div>
     <div id="searchResult" class="pokedex"></div>
-    <div id="container" class="pokedex"></div>
+    <div id="container" class="container"></div>
     <script src="src/getPokemon.js"></script>
 </body>
 </html>

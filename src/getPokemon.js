@@ -7,22 +7,48 @@ async function pokeApi(id){
 
 function createPokemon(pokemon){
     const $pokeDiv = document.createElement('div');
+    const $pokeStats = document.createElement('div');
+    const $typeText = document.createElement('div');
+    const $typeContainer = document.createElement('div');
     const $pokeContainer = document.querySelector('#container');
 
     const $pokeName = document.createElement('h1');
     const $pokeImg = document.createElement('img');
-    const $pokeType = document.createElement('p');
 
     $pokeName.innerHTML = pokemon.name;
+    $pokeName.className = "name";
     $pokeImg.src = pokemon.sprites['front_default'];
-    const $type = pokemon.types.map((type) => type.type.name).join(', ');
-    $pokeType.innerHTML = $type;
+    $pokeImg.className = "imgPoke";
 
-    $pokeDiv.classList.add("rojo");
+    
+    const $type = pokemon.types.map((type) => type.type.name).join(' ');
+    $typeText.textContent = `${$type}`;
+    $typeText.className = "typeText";
+    $typeContainer.className = "type";
+    $typeContainer.append($typeText);
+    $pokeStats.append($typeContainer);
+
+    for(let i=0; i <= 5; i++){
+        const $statsName = document.createElement('div');
+        const $statsNumber = document.createElement('div');
+        const $statsContainer = document.createElement('div');
+        $statsName.className ="statName";
+        $statsNumber.className = "statNumber";
+        $statsContainer.className ="statsText";
+        $statsName.textContent = `${pokemon.stats[i].stat.name}`
+        $statsNumber.textContent = `${pokemon.stats[i].base_stat}`
+        $statsContainer.append($statsName, $statsNumber);
+        $pokeStats.append($statsContainer);
+    }
+
+    $pokeStats.className = "stats";
+    $pokeDiv.classList.add("card");
     $pokeDiv.id = pokemon.name;
-    $pokeDiv.append($pokeName, $pokeImg, $pokeType);
+    $pokeDiv.append($pokeName, $pokeImg,  $typeContainer, $pokeStats);
     $pokeContainer.appendChild($pokeDiv);
+    console.log(pokemon.stats[0].stat.name);
 }
+
 
 const generations = {
     "1": [1, 151],
@@ -36,12 +62,12 @@ const generations = {
 }
 
 function buttonsGeneration(num){
-    const $generation = document.querySelector('#generation');
+    const $generation = document.querySelector('.generation');
 
     for(let i=1; i<=num; i++){
         const $button = document.createElement('button');
         $button.id = i;
-        $button.textContent = `GENERATION ${i}`;
+        $button.textContent = `${i}`;
         const setGeneration = generations[i];
         $button.onclick = function(){
             getPokemons(setGeneration);
@@ -75,7 +101,7 @@ async function searchPokemon(){
         $searchContainer.innerHTML = '';
         $container.classList.remove("hide");
     }
-    
+
 }
 
 
